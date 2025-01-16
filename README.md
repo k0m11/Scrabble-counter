@@ -1,2 +1,2 @@
 # Scrabble-counter
-Count points while playing scrabble
+React app for counting points in Scrabble
