@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Scrabble-counter/static/css/main.ed039d71.css",
-    "main.js": "/Scrabble-counter/static/js/main.b14788f4.js",
+    "main.css": "/Scrabble-counter/static/css/main.49109959.css",
+    "main.js": "/Scrabble-counter/static/js/main.9449c3e3.js",
     "index.html": "/Scrabble-counter/index.html",
-    "main.ed039d71.css.map": "/Scrabble-counter/static/css/main.ed039d71.css.map",
-    "main.b14788f4.js.map": "/Scrabble-counter/static/js/main.b14788f4.js.map"
+    "main.49109959.css.map": "/Scrabble-counter/static/css/main.49109959.css.map",
+    "main.9449c3e3.js.map": "/Scrabble-counter/static/js/main.9449c3e3.js.map"
   },
   "entrypoints": [
-    "static/css/main.ed039d71.css",
-    "static/js/main.b14788f4.js"
+    "static/css/main.49109959.css",
+    "static/js/main.9449c3e3.js"
   ]
 }
