@@ -4,7 +4,10 @@ import data from "./Data/Data.js"
 export default function Player({ name }) {
 
     const [input, setInput] = useState("")
-    const [points, setPoints] = useState(56)
+    const [points, setPoints] = useState(0)
+    const [isDoubleWord, SetIsDoubleWord] = useState(false)
+    const [isTripleWord, SetIsTripleWord] = useState(false)
+    const [extraOptions, setExtraOptions] = useState(false)
 
     function addPoints(e) {
         e.preventDefault()
@@ -14,18 +17,58 @@ export default function Player({ name }) {
         for (let i = 0; i < input.length; i++) {
             wordPoints += data[newWord[i]]
         }
-        setPoints(points + wordPoints)
-        setInput("")
+
+        checkExtraOptions(wordPoints);
+        console.log(extraOptions)
+        if (extraOptions) {
+            setInput("")
+        }
+        else {
+            setPoints(points + wordPoints)
+            setInput("")
+        }
+    }
+
+    function checkExtraOptions(wordPoints) {
+        if (isDoubleWord) {
+            setExtraOptions(true)
+            doubleWord(wordPoints)
+            SetIsDoubleWord(false)
+        }
+        if (isTripleWord) {
+            setExtraOptions(true)
+            tripleWord(wordPoints)
+            SetIsTripleWord(false)
+        }
+        else setExtraOptions(false)
+    }
+
+    function changeDoubleWord() {
+        SetIsDoubleWord(D => !D)
+    }
+    function changeTripleWord() {
+        SetIsTripleWord(D => !D)
+    }
+
+    function doubleWord(wordPoints) {
+        setPoints(points + wordPoints * 2)
+    }
+    function tripleWord(wordPoints) {
+        setPoints(points + wordPoints * 3)
     }
 
   return (
     <div className="player">
         <h1>{name}</h1>
         <h1>Total: {points}</h1>
-        <form onSubmit={"return false"}>
+        <form>
             <input type="text" value={input} onChange={e => setInput(e.target.value)}/>
             <button onClick={addPoints}>Add</button>
         </form>
+        <input type="checkbox" checked={isDoubleWord} onChange={changeDoubleWord} />
+        <span>Double word</span>
+        <input type="checkbox" checked={isTripleWord} onChange={changeTripleWord} />
+        <span>Triple word</span>
     </div>
   )
 }

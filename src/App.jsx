@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-import Player from './components/Player';
+import PlayersSection from './components/PlayersSection';
 import './styles/App.css'
 
 function App() {
-  const [name, setName] = useState('Matvei')
+  const  [names, setNames] = useState(["matvei","andrew","michael", "dimaWWW",])
 
   return (
     <div className="App">
-      <Player name={name}/>
-      <Player name={"Sergey"}/>
-      <Player name={"Grandma"}/>
-      <Player name={"Inna"}/>
+      <PlayersSection names = {names}/>
     </div>
   );
 }
