@@ -7,7 +7,6 @@ export default function Player({ name }) {
     const [points, setPoints] = useState(0)
     const [isDoubleWord, SetIsDoubleWord] = useState(false)
     const [isTripleWord, SetIsTripleWord] = useState(false)
-    const [extraOptions, setExtraOptions] = useState(false)
 
     function addPoints(e) {
         e.preventDefault()
@@ -17,10 +16,9 @@ export default function Player({ name }) {
         for (let i = 0; i < input.length; i++) {
             wordPoints += data[newWord[i]]
         }
-
         checkExtraOptions(wordPoints);
-        console.log(extraOptions)
-        if (extraOptions) {
+        
+        if (isDoubleWord || isTripleWord) {
             setInput("")
         }
         else {
@@ -29,25 +27,22 @@ export default function Player({ name }) {
         }
     }
 
-    function checkExtraOptions(wordPoints) {
-        if (isDoubleWord) {
-            setExtraOptions(true)
-            doubleWord(wordPoints)
-            SetIsDoubleWord(false)
-        }
-        if (isTripleWord) {
-            setExtraOptions(true)
-            tripleWord(wordPoints)
-            SetIsTripleWord(false)
-        }
-        else setExtraOptions(false)
-    }
-
     function changeDoubleWord() {
         SetIsDoubleWord(D => !D)
     }
     function changeTripleWord() {
         SetIsTripleWord(D => !D)
+    }
+
+    function checkExtraOptions(points) {
+        if (isDoubleWord) {
+            doubleWord(points)
+            SetIsDoubleWord(false)
+        }
+        if (isTripleWord) {
+            tripleWord(points)
+            SetIsTripleWord(false)
+        }
     }
 
     function doubleWord(wordPoints) {
